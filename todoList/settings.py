@@ -26,7 +26,7 @@ SECRET_KEY = '3+oapdn%v_p$d!&v866(2&5w=hqcc$_3za#=sq(aa9cnlhbzjq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'todosamp.herokuapp.com']
 
 
 # Application definition
