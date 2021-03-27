@@ -3,29 +3,43 @@
 {% block hometab %}inactive{% endblock hometab %}
 {% block tasktab %}active{% endblock tasktab %}
 
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+{% endblock head %}
+
 {% block body %}
 <div class="container my-3">
     <h2 class="text-center">Here is the list of your tasks</h2>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Task Title</th>
-      <th scope="col">Task Description</th>
-      <th scope="col">Timestamp</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% comment %} Run a for all and iterate through all the tasks from the sqlite3 database {% endcomment %}
-  {% for t in tasks %}
-    <tr>
-      <th scope="row">{{forloop.counter}}</th>
-      <td>{{t.TaskTitle}}</td>
-      <td>{{t.TaskDesc}}</td>
-      <td>{{t.TaskTime}}</td>
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+    <table class="display table" id="table_id">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Task Title</th>
+                <th scope="col">Task Description</th>
+                <th scope="col">Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% comment %} Run a for all and iterate through all the tasks from the sqlite3 database {% endcomment %}
+            {% for t in tasks %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{t.TaskTitle}}</td>
+                <td>{{t.TaskDesc}}</td>
+                <td>{{t.TaskTime}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock body %}
+
+{% block js %}
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
+{% endblock js %}
